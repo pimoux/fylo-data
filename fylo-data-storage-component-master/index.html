@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Fylo data storage component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    /* MEDIA QUERIES */
+
+    @media screen and (max-width: 375px) {
+      body{
+        background: url(images/bg-mobile.png) no-repeat center center fixed !important;
+        background-size: cover !important;
+      }
+      #informations{
+        flex-direction: column-reverse !important;
+      }
+      #boxGB{
+        margin-left: 0px !important;
+        width: 85vw !important;
+      }
+      #files{
+        margin-right: 0px !important;
+        margin-bottom: 15px !important;
+        width: 85vw !important;
+      }
+
+      #informations #boxGB #bubble{
+      left: 12% !important;
+      top: 20% !important;
+      border-radius: 10px !important;
+    }
+
+      #informations #boxGB #bubble::after{
+      content:"" !important;
+      border: none !important;
+      }
+
+      #informations #boxGB{
+      padding: 20px 20px !important;
+    }
+    }
+
+    /* DESIGN */
+    *{
+      box-sizing: border-box;
+    }
+    body{
+      background: url(images/bg-desktop.png) no-repeat center center, hsl(229, 57%, 11%);
+      background-position: bottom;
+      background-size: contain;
+      width: 100%;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: 'Raleway', sans-serif;
+    }
+
+    #informations{
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      z-index: 0;
+    }
+
+    #informations #boxGB{
+      display: flex;
+      flex-direction: column;
+      width: 600px;
+      height: 183px;
+      background-color:hsl(228, 56%, 26%);
+      border-radius: 20px;
+      margin-left: 13px;
+    }
+
+    #files{
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+      height: 200px;
+      background-color:hsl(228, 56%, 26%);
+      border-radius: 10px;
+      border-top-right-radius: 100px;
+      margin-bottom: 42.5px;
+      margin-right: 13px;
+    }
+
+    #informations #boxGB{
+      padding: 30px 50px;
+      font-weight: 400;
+      color: hsl(243, 100%, 93%);
+    }
+
+    #files #icons{
+      margin-left: 20px;
+      margin-top: 30px;
+      display: flex;
+    }
+
+    #files img{
+      margin-left: 35px;
+      margin-top: 35px;
+    }
+    #files #icons .bgicons{
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      width: 50px;
+      height: 50px;
+      background-color:hsl(229, 57%, 11%);
+    }
+
+    #files #icons .bgicons img{
+      margin-right: 35px;
+      margin-bottom: 35px;
+    }
+
+    #informations #boxGB #bar{
+      display: flex;
+      width: 100%;
+      height: 20px;
+      border-radius: 30px;
+      background-color:hsl(229, 57%, 11%);
+      z-index: 1;
+    }
+
+    #informations #boxGB #bar #load{
+      display: flex;
+      flex-direction: row-reverse;
+      width: 75%;
+      height: 100% inherit;
+      border-radius: 30px;
+      margin: 3px;
+      background: linear-gradient(0.25turn, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+      z-index: 2;
+    }
+
+    #informations #boxGB #bar #load #button{
+      width: 12px;
+      height: 100% inherit;
+      border-radius: 30px;
+      background-color: white;
+      margin: 2px;
+    }
+
+    #informations #boxGB #text{
+      font-weight: 700;
+      font-size: 0.9em;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    #informations #boxGB #bubble{
+      position: relative;
+      left: 60%;
+      bottom: 150%;
+      display: flex;
+      font-weight: 700;
+      align-items: center;
+      text-transform: uppercase;
+      background-color: white;
+      border-radius: 10px 10px 0px 10px;
+      width: 200px;
+      padding: 10px 25px;
+      z-index: 3;
+    }
+
+    #informations #boxGB #bubble::after{
+      content:""; 
+      border-top : 30px solid white;
+      border-left : 30px solid transparent;
+      position: absolute;
+      top: 100%;
+      left: 85%;
+    }
+
+    #informations #boxGB #bubble span:first-child{
+      color: hsl(229, 57%, 11%);
+      font-size: 50px;
+      margin-right: 10px;
+    }
+
+    #informations #boxGB #bubble span:last-child{
+      color: hsl(229, 7%, 55%);
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+    <div id="informations">
+      <div id="boxGB">
+        <p>You’ve used <b>815 GB</b> of your storage</p>
+          <div id="bar">
+            <div id="load">
+              <div id="button">
+
+              </div>
+            </div>
+          </div>
+          <div id="text">
+            <span>0 GB </span> <span>1000 GB</span>
+          </div>
+          <div id="bubble">
+            <span>185</span><span>GB Left</span>
+          </div>
+      </div>
+      <div id="files">
+        <img src="images/logo.svg" width="135px" height="40px">
+        <div id="icons">
+          <div class="bgicons">
+            <img src="images/icon-document.svg" width="20" height="24">
+          </div>
+          <div class="bgicons">
+            <img src="images/icon-folder.svg" width="24" height="20">
+          </div>
+          <div class="bgicons">
+            <img src="images/icon-upload.svg" width="24" height="16">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">pimoux</a>.
+    </div>
+</body>
+</html>
